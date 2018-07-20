@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>若懿的个人博客</title>
+  
+  <subtitle>假装会写代码</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://ruoyi.github.io/"/>
+  <updated>2018-07-20T08:40:44.026Z</updated>
+  <id>https://ruoyi.github.io/</id>
+  
+  <author>
+    <name>若懿</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DispatchQueue.init 思考</title>
+    <link href="https://ruoyi.github.io/2018/07/20/DispatchQueue-init-%E6%80%9D%E8%80%83/"/>
+    <id>https://ruoyi.github.io/2018/07/20/DispatchQueue-init-思考/</id>
+    <published>2018-07-20T03:48:03.000Z</published>
+    <updated>2018-07-20T08:40:44.026Z</updated>
+    
+    <content type="html"><![CDATA[<p>线程队列的创建同常用下面这个函数创建，这几个参数很有意思，我们来慢慢解读</p><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">convenience</span> <span class="keyword">init</span>(label: <span class="type">String</span>,</span><br><span class="line">                          qos: <span class="type">DispatchQoS</span> = <span class="keyword">default</span>,</span><br><span class="line">                   attributes: <span class="type">DispatchQueue</span>.<span class="type">Attributes</span> = <span class="keyword">default</span>,</span><br><span class="line">         autoreleaseFrequency: <span class="type">DispatchQueue</span>.<span class="type">AutoreleaseFrequency</span> = <span class="keyword">default</span>,</span><br><span class="line">                       target: <span class="type">DispatchQueue</span>? = <span class="keyword">default</span>)</span><br></pre></td></tr></table></figure><blockquote><p>Parameter: label<br>Parameter: qos<br>Parameter: attributes</p></blockquote><p>前三个参数请参考，这里讲解的很详细了。 <a href="https://swift.gg/2016/11/30/grand-central-dispatch" target="_blank" rel="noopener">Swift 3 中的 GCD 与 Dispatch Queue</a></p><h3 id="参数-autoreleaseFrequency"><a href="#参数-autoreleaseFrequency" class="headerlink" title="参数 autoreleaseFrequency:"></a>参数 autoreleaseFrequency:</h3><p>由参数名我们可以看，这个参数和内存管理有关</p><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类型定义</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">AutoreleaseFrequency</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 继承？ 继承谁的？</span></span><br><span class="line">    <span class="keyword">case</span> inherit</span><br><span class="line">    <span class="comment">// 为每个 workItem 创建一个自动释放池</span></span><br><span class="line">    <span class="meta">@available</span>(<span class="type">OSX</span> <span class="number">10.12</span>, iOS <span class="number">10.0</span>, tvOS <span class="number">10.0</span>, watchOS <span class="number">3.0</span>, *)</span><br><span class="line">    <span class="keyword">case</span> workItem</span><br><span class="line">    <span class="comment">// 从不创建自动释放池</span></span><br><span class="line">    <span class="meta">@available</span>(<span class="type">OSX</span> <span class="number">10.12</span>, iOS <span class="number">10.0</span>, tvOS <span class="number">10.0</span>, watchOS <span class="number">3.0</span>, *)</span><br><span class="line">    <span class="keyword">case</span> never</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>系统在每个runloop迭代中都加入了自动释放池Push和Pop。<a href="https://blog.sunnyxx.com/2014/10/15/behind-autorelease/" target="_blank" rel="noopener">黑幕背后的Autorelease</a></p></blockquote><p>但是由于在多线程中 <code>Runloop</code> 是属于懒加载的模式，如果不是我们手动调用的话是不会创建 <code>Runloop</code> 的。<br>所以这个参数非常重要，根据定义我们知道 <code>workItem</code> 为每个 workItem 创建一个自动释放池， <code>never</code> 不会创建自动释放池， 那 <code>inherit</code> 呢？</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;线程队列的创建同常用下面这个函数创建，这几个参数很有意思，我们来慢慢解读&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;b
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>用 Runtime 实现懒加载</title>
+    <link href="https://ruoyi.github.io/2018/07/19/hello-world/"/>
+    <id>https://ruoyi.github.io/2018/07/19/hello-world/</id>
+    <published>2018-07-19T09:23:12.926Z</published>
+    <updated>2018-07-19T10:03:42.478Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
