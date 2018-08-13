@@ -96,17 +96,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="在开发过程中很多时候会用到懒加载, 很多重复性质的操作. 123456- (Type *)properrtyName &amp;#123;    if (_name == nil) &amp;#123;        _name = [Type new];    &amp;#125;    return _name;&amp;#125; 解决办法 通过 Runtime 对未重写 get 方法的懒加载属性, 进行方法替换 当调用懒">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用 Runtime 实现懒加载">
+<meta property="og:title" content="Runtime 实现懒加载">
 <meta property="og:url" content="https://ruoyi.github.io/2018/07/19/hello-world/index.html">
 <meta property="og:site_name" content="若懿的个人博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="在开发过程中很多时候会用到懒加载, 很多重复性质的操作. 123456- (Type *)properrtyName &amp;#123;    if (_name == nil) &amp;#123;        _name = [Type new];    &amp;#125;    return _name;&amp;#125; 解决办法 通过 Runtime 对未重写 get 方法的懒加载属性, 进行方法替换 当调用懒">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-19T10:03:42.478Z">
+<meta property="og:updated_time" content="2018-08-13T07:00:20.082Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用 Runtime 实现懒加载">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="Runtime 实现懒加载">
+<meta name="twitter:description" content="在开发过程中很多时候会用到懒加载, 很多重复性质的操作. 123456- (Type *)properrtyName &amp;#123;    if (_name == nil) &amp;#123;        _name = [Type new];    &amp;#125;    return _name;&amp;#125; 解决办法 通过 Runtime 对未重写 get 方法的懒加载属性, 进行方法替换 当调用懒">
 
 
 
@@ -141,7 +141,7 @@
 
 
 
-  <title>用 Runtime 实现懒加载 | 若懿的个人博客</title>
+  <title>Runtime 实现懒加载 | 若懿的个人博客</title>
   
 
 
@@ -281,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">用 Runtime 实现懒加载</h1>
+          <h1 class="post-title" itemprop="name headline">Runtime 实现懒加载</h1>
         
 
         <div class="post-meta">
@@ -331,15 +331,21 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>在开发过程中很多时候会用到懒加载, 很多重复性质的操作.</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (Type *)properrtyName &#123;</span><br><span class="line">    <span class="keyword">if</span> (_name == <span class="literal">nil</span>) &#123;</span><br><span class="line">        _name = [Type new];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><ol>
+<li>通过 <code>Runtime</code> 对未重写 <code>get</code> 方法的懒加载属性, 进行方法替换</li>
+<li>当调用懒加载的属性，通过 <code>object_getIvar</code> 看这个属性是否为<code>nil</code><br>如果不为空的话，直接返回，获得值</li>
+<li>如果为空的话，则检测该类是否重写了 <code>set</code> 方法，如果重写就通过 <code>NSInvocation</code> 调用重写的 <code>set</code> 方法。如果没有重写的话就 通过 <code>object_setIvar</code> 为这个懒加载属性设置 <code>Ivar</code>(注意调用<code>willChangeValueForKey</code>, <code>didChangeValueForKey</code>)</li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><a href="https://github.com/ruoyi/RYLazyProperty" target="_blank" rel="noopener">一行代码解决懒加载</a></p>
+<p>使用方法</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Animal ry_setLazyPropertyArr:@[<span class="string">@"name"</span>,<span class="string">@"foots"</span>,<span class="string">@"attribute"</span>,]];</span><br><span class="line">[ViewController ry_setLazyPropertyArr:@[<span class="string">@"animal"</span>]];</span><br></pre></td></tr></table></figure>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>本代码未对线程安全做任何处理，请自行解决🙂</p>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ul>
+<li><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtPropertyIntrospection.html#//apple_ref/doc/uid/TP40008048-CH101" target="_blank" rel="noopener">Declared Properties</a></li>
+<li><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtHowMessagingWorks.html#//apple_ref/doc/uid/TP40008048-CH104-TPXREF163" target="_blank" rel="noopener">Using Hidden Arguments : _cmd</a></li>
+</ul>
 
       
     </div>
@@ -508,7 +514,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决办法"><span class="nav-number">1.</span> <span class="nav-text">解决办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项"><span class="nav-number">3.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文档"><span class="nav-number">4.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
             
 
           </div>
