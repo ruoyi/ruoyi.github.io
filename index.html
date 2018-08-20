@@ -343,9 +343,12 @@
 <li>如何实现用 <code>Block</code> 代替系统的复杂 <code>API</code></li>
 <li>注意事项</li>
 </ul>
-<h3 id="相关类"><a href="#相关类" class="headerlink" title="相关类"></a>相关类</h3><h4 id="FBKVOInfo"><a href="#FBKVOInfo" class="headerlink" title="_FBKVOInfo"></a><strong><code>_FBKVOInfo</code></strong></h4><p><img src="media/15347590338917.jpg" alt=""></p>
+<h3 id="相关类"><a href="#相关类" class="headerlink" title="相关类"></a>相关类</h3><h4 id="FBKVOInfo"><a href="#FBKVOInfo" class="headerlink" title="_FBKVOInfo"></a><strong><code>_FBKVOInfo</code></strong></h4><p><img src="./images/15347590338917.png" alt=""></p>
 <blockquote>
-<p>相当于一个 <code>Model</code> 来记录相关属性<br><code>_FBKVOSharedController</code>:<br><code>_FBKVOSharedController</code>: </p>
+<p>相当于一个 <code>Model</code> 来记录相关属性<br>重写 <code>- (NSUInteger)hash</code> 函数, 防止在集合类型中添加重复的 <code>_keyPath</code><br>重写 <code>- (BOOL)isEqual:(id)object</code> 进行对象的判等</p>
+</blockquote>
+<h4 id="FBKVOSharedController"><a href="#FBKVOSharedController" class="headerlink" title="_FBKVOSharedController"></a><strong><code>_FBKVOSharedController</code></strong></h4><blockquote>
+<p>事件的逻辑处理</p>
 </blockquote>
 <h3 id="细节学习"><a href="#细节学习" class="headerlink" title="细节学习"></a>细节学习</h3><ul>
 <li>这里用了 <code>copy</code> <img src="./images/KVOControllerCopyPath.jpeg" alt=""></li>

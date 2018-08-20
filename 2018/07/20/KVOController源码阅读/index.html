@@ -83,6 +83,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="若懿的个人博客" type="application/atom+xml" />
 
@@ -96,21 +98,21 @@
 
 
 
-<meta name="description" content="源码: https://github.com/facebook/KVOController版本: v1.2.0用途: 更加方便的使用 KVO  带着问题读 如何实现用 Block 代替系统的复杂 API 注意事项  相关类_FBKVOInfo  相当于一个 Model 来记录相关属性_FBKVOSharedController:_FBKVOSharedController:   细节学习 这里用">
+<meta name="description" content="源码: https://github.com/facebook/KVOController版本: v1.2.0用途: 更加方便的使用 KVO  带着问题读 如何实现用 Block 代替系统的复杂 API 注意事项  相关类_FBKVOInfo  相当于一个 Model 来记录相关属性重写 - (NSUInteger)hash 函数, 防止在集合类型中添加重复的 _keyPath重写 - (BOO">
 <meta property="og:type" content="article">
 <meta property="og:title" content="KVOController源码阅读">
 <meta property="og:url" content="https://ruoyi.github.io/2018/07/20/KVOController源码阅读/index.html">
 <meta property="og:site_name" content="若懿的个人博客">
-<meta property="og:description" content="源码: https://github.com/facebook/KVOController版本: v1.2.0用途: 更加方便的使用 KVO  带着问题读 如何实现用 Block 代替系统的复杂 API 注意事项  相关类_FBKVOInfo  相当于一个 Model 来记录相关属性_FBKVOSharedController:_FBKVOSharedController:   细节学习 这里用">
+<meta property="og:description" content="源码: https://github.com/facebook/KVOController版本: v1.2.0用途: 更加方便的使用 KVO  带着问题读 如何实现用 Block 代替系统的复杂 API 注意事项  相关类_FBKVOInfo  相当于一个 Model 来记录相关属性重写 - (NSUInteger)hash 函数, 防止在集合类型中添加重复的 _keyPath重写 - (BOO">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ruoyi.github.io/2018/07/20/KVOController源码阅读/media/15347590338917.jpg">
+<meta property="og:image" content="https://ruoyi.github.io/2018/07/20/KVOController源码阅读/images/15347590338917.png">
 <meta property="og:image" content="https://ruoyi.github.io/2018/07/20/KVOController源码阅读/images/KVOControllerCopyPath.jpeg">
 <meta property="og:image" content="https://ruoyi.github.io/2018/07/20/KVOController源码阅读/images/屏幕快照%202018-08-20%20下午5.34.29.png">
-<meta property="og:updated_time" content="2018-08-20T10:00:06.948Z">
+<meta property="og:updated_time" content="2018-08-20T10:21:18.876Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KVOController源码阅读">
-<meta name="twitter:description" content="源码: https://github.com/facebook/KVOController版本: v1.2.0用途: 更加方便的使用 KVO  带着问题读 如何实现用 Block 代替系统的复杂 API 注意事项  相关类_FBKVOInfo  相当于一个 Model 来记录相关属性_FBKVOSharedController:_FBKVOSharedController:   细节学习 这里用">
-<meta name="twitter:image" content="https://ruoyi.github.io/2018/07/20/KVOController源码阅读/media/15347590338917.jpg">
+<meta name="twitter:description" content="源码: https://github.com/facebook/KVOController版本: v1.2.0用途: 更加方便的使用 KVO  带着问题读 如何实现用 Block 代替系统的复杂 API 注意事项  相关类_FBKVOInfo  相当于一个 Model 来记录相关属性重写 - (NSUInteger)hash 函数, 防止在集合类型中添加重复的 _keyPath重写 - (BOO">
+<meta name="twitter:image" content="https://ruoyi.github.io/2018/07/20/KVOController源码阅读/images/15347590338917.png">
 
 
 
@@ -342,9 +344,12 @@
 <li>如何实现用 <code>Block</code> 代替系统的复杂 <code>API</code></li>
 <li>注意事项</li>
 </ul>
-<h3 id="相关类"><a href="#相关类" class="headerlink" title="相关类"></a>相关类</h3><h4 id="FBKVOInfo"><a href="#FBKVOInfo" class="headerlink" title="_FBKVOInfo"></a><strong><code>_FBKVOInfo</code></strong></h4><p><img src="media/15347590338917.jpg" alt=""></p>
+<h3 id="相关类"><a href="#相关类" class="headerlink" title="相关类"></a>相关类</h3><h4 id="FBKVOInfo"><a href="#FBKVOInfo" class="headerlink" title="_FBKVOInfo"></a><strong><code>_FBKVOInfo</code></strong></h4><p><img src="./images/15347590338917.png" alt=""></p>
 <blockquote>
-<p>相当于一个 <code>Model</code> 来记录相关属性<br><code>_FBKVOSharedController</code>:<br><code>_FBKVOSharedController</code>: </p>
+<p>相当于一个 <code>Model</code> 来记录相关属性<br>重写 <code>- (NSUInteger)hash</code> 函数, 防止在集合类型中添加重复的 <code>_keyPath</code><br>重写 <code>- (BOOL)isEqual:(id)object</code> 进行对象的判等</p>
+</blockquote>
+<h4 id="FBKVOSharedController"><a href="#FBKVOSharedController" class="headerlink" title="_FBKVOSharedController"></a><strong><code>_FBKVOSharedController</code></strong></h4><blockquote>
+<p>事件的逻辑处理</p>
 </blockquote>
 <h3 id="细节学习"><a href="#细节学习" class="headerlink" title="细节学习"></a>细节学习</h3><ul>
 <li>这里用了 <code>copy</code> <img src="./images/KVOControllerCopyPath.jpeg" alt=""></li>
@@ -518,7 +523,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#带着问题读"><span class="nav-number">1.</span> <span class="nav-text">带着问题读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关类"><span class="nav-number">2.</span> <span class="nav-text">相关类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FBKVOInfo"><span class="nav-number">2.1.</span> <span class="nav-text">_FBKVOInfo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#细节学习"><span class="nav-number">3.</span> <span class="nav-text">细节学习</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#带着问题读"><span class="nav-number">1.</span> <span class="nav-text">带着问题读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关类"><span class="nav-number">2.</span> <span class="nav-text">相关类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FBKVOInfo"><span class="nav-number">2.1.</span> <span class="nav-text">_FBKVOInfo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FBKVOSharedController"><span class="nav-number">2.2.</span> <span class="nav-text">_FBKVOSharedController</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#细节学习"><span class="nav-number">3.</span> <span class="nav-text">细节学习</span></a></li></ol></div>
             
 
           </div>
