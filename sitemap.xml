@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://ruoyi.github.io/2018/07/19/Runtime-Lazy-Property/</loc>
+    <loc>https://ruoyi.github.io/2018/07/20/KVOController%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</loc>
     
-    <lastmod>2018-08-13T07:00:20.082Z</lastmod>
+    <lastmod>2018-08-20T10:00:06.948Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ruoyi.github.io/2017/07/20/Runtime-Lazy-Property/</loc>
+    
+    <lastmod>2018-08-20T09:04:13.019Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://ruoyi.github.io/2018/07/20/DispatchQueue-init-%E6%80%9D%E8%80%83/</loc>
     
-    <lastmod>2018-07-20T08:40:44.026Z</lastmod>
+    <lastmod>2018-08-20T08:22:43.130Z</lastmod>
     
   </url>
   

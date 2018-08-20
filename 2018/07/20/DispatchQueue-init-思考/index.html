@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="若懿的个人博客">
 <meta property="og:description" content="线程队列的创建同常用下面这个函数创建，这几个参数很有意思，我们来慢慢解读 12345public convenience init(label: String,                          qos: DispatchQoS = default,                   attributes: DispatchQueue.Attributes = default,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-20T08:40:44.026Z">
+<meta property="og:updated_time" content="2018-08-20T08:22:43.130Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DispatchQueue.init 思考">
 <meta name="twitter:description" content="线程队列的创建同常用下面这个函数创建，这几个参数很有意思，我们来慢慢解读 12345public convenience init(label: String,                          qos: DispatchQoS = default,                   attributes: DispatchQueue.Attributes = default,">
@@ -344,7 +344,7 @@
 <blockquote>
 <p>系统在每个runloop迭代中都加入了自动释放池Push和Pop。<a href="https://blog.sunnyxx.com/2014/10/15/behind-autorelease/" target="_blank" rel="noopener">黑幕背后的Autorelease</a></p>
 </blockquote>
-<p>但是由于在多线程中 <code>Runloop</code> 是属于懒加载的模式，如果不是我们手动调用的话是不会创建 <code>Runloop</code> 的。<br>所以这个参数非常重要，根据定义我们知道 <code>workItem</code> 为每个 workItem 创建一个自动释放池， <code>never</code> 不会创建自动释放池， 那 <code>inherit</code> 呢？</p>
+<p>但是由于在多线程中 <code>Runloop</code> 是属于懒加载的模式，如果不是我们手动调用的话是不会创建 <code>Runloop</code> 的。<br>所以这个参数非常重要，根据定义我们知道 <code>workItem</code> 为每个 workItem 创建一个自动释放池， <code>never</code> 不会创建自动释放池， 那 <code>inherit</code> 呢？参考<a href="https://juejin.im/post/5a0c5b6af265da431e164e17" target="_blank" rel="noopener">各个线程 Autorelease 对象的内存管理</a></p>
 
       
     </div>
@@ -369,7 +369,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/19/Runtime-Lazy-Property/" rel="next" title="Runtime 实现懒加载">
+              <a href="/2017/07/20/Runtime-Lazy-Property/" rel="next" title="Runtime 实现懒加载">
                 <i class="fa fa-chevron-left"></i> Runtime 实现懒加载
               </a>
             
@@ -378,6 +378,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/20/KVOController源码阅读/" rel="prev" title="KVOController源码阅读">
+                KVOController源码阅读 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -454,7 +458,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
