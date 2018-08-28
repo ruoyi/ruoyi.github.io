@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ruoyi.github.io/"/>
-  <updated>2018-08-22T01:50:39.717Z</updated>
+  <updated>2018-08-28T06:56:49.790Z</updated>
   <id>https://ruoyi.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>再看ViewController生命周期</title>
+    <link href="https://ruoyi.github.io/2018/08/27/%E5%86%8D%E7%9C%8BViewController%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
+    <id>https://ruoyi.github.io/2018/08/27/再看ViewController生命周期/</id>
+    <published>2018-08-27T14:09:06.000Z</published>
+    <updated>2018-08-28T06:56:49.790Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先看一段代码</p><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">LabelViewController</span> : <span class="title">UIViewController</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">UILabel</span> *label;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">LabelViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">UILabel</span> *)label &#123;</span><br><span class="line">    <span class="keyword">if</span> (_label == <span class="literal">nil</span>) &#123;</span><br><span class="line">        _label = [[<span class="built_in">UILabel</span> alloc]initWithFrame: <span class="keyword">self</span>.view.bounds];</span><br><span class="line">        _label.backgroundColor = <span class="built_in">UIColor</span>.yellowColor;</span><br><span class="line">        _label.textColor = <span class="built_in">UIColor</span>.blueColor;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _label;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:<span class="keyword">self</span>.label];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是ViewController(有navigationController)中的一个函数，当调用这个函数的时候, label中的文字会显示吗? 请思考1分钟 </span></span><br><span class="line">- (<span class="keyword">void</span>)pushLableViewControllerAction &#123;</span><br><span class="line">    LabelViewController *labelController = [[LabelViewController alloc] init];</span><br><span class="line">    labelController.label.text = <span class="string">@"我会显示吗"</span>;</span><br><span class="line">    [<span class="keyword">self</span>.navigationController pushViewController:labelController</span><br><span class="line">                                         animated:<span class="literal">YES</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>首先我们先看一下 <code>UIViewController</code> 的生命周期</p><p><img src="./images/1354776680_2123.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;首先看一段代码&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>KVOController源码学习</title>
